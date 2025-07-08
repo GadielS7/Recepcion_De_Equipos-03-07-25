@@ -16,6 +16,72 @@ function buscarRecibos() {
     });
 }
 
+//
+// Función para confirmar y cambiar el estado del recibo a completado (id_estado=3)
+// Función para marcar recibo como completado (id_estado = 3)
+function abrirCompletadoConfirmar(idRecibo) {
+    if (confirm('¿Estás seguro de marcar este recibo como COMPLETADO?')) {
+        // Obtener el token CSRF
+        const token = document.querySelector('meta[name="csrf-token"]').content;
+        
+        // Configurar y enviar la petición POST
+        fetch('/ticket/actualizarEstadoRecibo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': token
+            },
+            body: JSON.stringify({
+                id_recibo: idRecibo,
+                id_estado: 3
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                // Mostrar notificación de éxito
+                mostrarNotificacion('success', 'Recibo marcado como completado');
+                
+                // Opcional: Recargar la página o actualizar solo la fila
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+            } else {
+                mostrarNotificacion('error', data.message || 'Error al actualizar el estado');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            mostrarNotificacion('error', 'Error de conexión con el servidor');
+        });
+    }
+}
+
+// Función para mostrar notificaciones (puedes usar Toastr o similar)
+function mostrarNotificacion(tipo, mensaje) {
+    // Implementación básica con alertas de Bootstrap
+    const alertType = tipo === 'success' ? 'alert-success' : 'alert-danger';
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert ${alertType} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
+    alertDiv.style.zIndex = '9999';
+    alertDiv.innerHTML = `
+        ${mensaje}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    document.body.appendChild(alertDiv);
+    
+    // Eliminar después de 5 segundos
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 5000);
+}
+
 
 // Versión simplificada - permite cualquier entrada
 function setupConceptoValidation(inputElement, errorElement) {

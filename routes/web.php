@@ -110,6 +110,12 @@ Route::resource('ticket', TicketController::class)
 ->except(['create', 'store', 'show', 'edit', 'update', 'destroy'])
 ->middleware('auth');
 
+//actualizar recibo a completo en el apartado de generar ticket
+     // En routes/web.php
+Route::post('/ticket/actualizarEstadoRecibo', [ReciboController::class, 'actualizarEstado'])
+     ->name('recibos.actualizarEstado')
+     ->middleware(['auth', 'admin']); // Asegúrate que 'admin' existe
+
 Route::resource('conceptos', ConceptoController::class)
 ->except(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
 ->middleware('auth');

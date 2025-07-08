@@ -1,0 +1,32 @@
+.btn-completar {
+    /* Estilos base sin borde */
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    
+    /* Centrado perfecto del SVG */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Transición para efectos hover */
+    transition: transform 0.2s ease;
+}
+
+/* Efecto sutil al interactuar */
+.btn-completar:hover {
+    transform: scale(1.1);
+}
+
+.btn-completar:active {
+    transform: scale(0.95);
+}
+
+/* Elimina el outline en todos los estados */
+.btn-completar:focus {
+    outline: none;
+    box-shadow: none;
+}

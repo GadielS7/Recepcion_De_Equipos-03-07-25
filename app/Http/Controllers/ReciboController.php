@@ -32,6 +32,27 @@ class ReciboController extends Controller
         return view('recibos.recibos-rechazados', compact('recibos', 'totalRecibos'));
     }
 
+    //marcar como completado en el apartado de generar tickets
+        public function actualizarEstado(Request $request) {
+        $request->validate([
+            'id_recibo' => 'required|exists:recibos,id',
+            'id_estado' => 'required|exists:estados,id'
+        ]);
+
+        try {
+            $recibo = Recibo::find($request->id_recibo);
+            $recibo->id_estado = $request->id_estado;
+            $recibo->save();
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al actualizar el estado: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
     //marcar sin cobrar
     public function marcarSinCobrar($id)
     {
