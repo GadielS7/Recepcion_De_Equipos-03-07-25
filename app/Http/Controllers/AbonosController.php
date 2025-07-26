@@ -193,7 +193,7 @@ public function storeCliente(Request $request)
             
             foreach ($request->productos as $producto) {
                 // Crear o actualizar el concepto
-                $concepto = NombreConcepto::updateOrCreate(
+                $concepto = NombreConcepto::firstOrCreate(
                     ['nombre' => $producto['nombre']],
                     [
                         'precio' => $producto['precio'],

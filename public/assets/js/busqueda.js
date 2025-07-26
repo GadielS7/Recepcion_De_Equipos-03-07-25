@@ -111,8 +111,7 @@ function convertirAMayusculas(input) {
 function limpiarTexto(textarea) {
     let texto = textarea.value;
     // Elimina caracteres especiales no deseados
-    texto = texto.replace(/[“”‘’]/g, '"');  // Reemplaza comillas curvas
-    texto = texto.replace(/\s+/g, ' ');     // Elimina espacios múltiples
+ // Elimina espacios múltiples
     textarea.value = texto;
 }
 function validarModelo(input) {

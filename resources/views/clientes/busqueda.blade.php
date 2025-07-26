@@ -128,11 +128,13 @@ function toggleNuevaMarca(select) {
     }
 }
 
+
+
 </script>
 
 @if(session('cliente') && is_array(session('cliente')))
 
-    <form action="{{ url('/home/registroEquipoCliente') }}" method="post">   
+    <form id="formGenerarRecibo" action="{{ url('/home/registroEquipoCliente') }}" method="post">   
         @csrf
         <div class="container">
             <!-- Mensajes de redireccionamiento -->
@@ -242,7 +244,9 @@ function toggleNuevaMarca(select) {
             <button type="button" id="duplicarCampo" class="btn btn-primary mt-3" onclick="duplicarCampos()">Agregar Nuevo Equipo</button>
 
             <!-- Botón para enviar el formulario -->
-            <button type="submit" class="enviar" style="margin-top: 40px;">Generar Recibo</button>
+            <button type="submit" class="enviar" style="margin-top: 40px;" onclick="this.disabled=true; this.innerHTML='Generando...'; this.form.submit();">Generar Recibo</button>
+
+
         </div>
     </form>
 

@@ -21,6 +21,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let cart = [];
     let debounceTimer;
 
+    //bloquear enter en buscar producto
+      const searchProductInput = document.getElementById("searchProduct");
+
+    searchProductInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault(); // Bloquear Enter
+        }
+    });
+
     // Función para mostrar errores
     function mostrarError(mensaje) {
         searchResults.innerHTML = `<li>${mensaje}</li>`;
