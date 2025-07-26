@@ -102,7 +102,7 @@ class ReciboController extends Controller
             $nombreImpresora = "EPSON L365 Series";
     
             // Ruta al ejecutable SumatraPDF
-            $sumatraPath = 'C:\\Users\\gadie\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe';
+            $sumatraPath = 'C:\\Users\\Usuario\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe';
     
             // Comando para imprimir el PDF
             $comando = "\"$sumatraPath\" -print-to \"$nombreImpresora\" \"$rutaPDF\"";

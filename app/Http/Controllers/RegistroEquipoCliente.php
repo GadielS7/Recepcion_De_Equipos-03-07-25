@@ -33,10 +33,6 @@ class RegistroEquipoCliente extends Controller
         'modelo.*' => 'required|string|regex:/^[a-zA-Z0-9\s\-]+$/',
         'ns' => 'nullable|array',
         'ns.*' => 'nullable|string|regex:/^[0-9]*$/',
-        'falla' => 'required|array',
-        'falla.*' => 'required|string|regex:/^[a-zA-Z0-9,\s\-ñÑáéíóúÁÉÍÓÚ.:$]*$/',
-        'accesorios' => 'nullable|array',
-        'accesorios.*' => 'nullable|string|regex:/^[a-zA-Z0-9,\s\n.\-]*$/',
     ]);
 
     // Si la validación falla, retornar errores

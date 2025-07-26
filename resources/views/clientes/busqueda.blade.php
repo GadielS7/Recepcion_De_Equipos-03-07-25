@@ -231,7 +231,7 @@ function toggleNuevaMarca(select) {
             <div class="col-md-4">
             <div class="form-group">
                 <label for="falla" class="form-label">Falla</label>
-                <textarea class="form-control" name="falla[]" id="falla" rows="5" placeholder="Describe la falla" oninput="limpiarTexto(this)" required></textarea>
+                <textarea class="form-control" name="falla[]" id="falla" rows="5" placeholder="Describe la falla" required></textarea>
             </div>
             <div class="form-group mt-3">
                 <label for="accesorios" class="form-label">Accesorios</label>

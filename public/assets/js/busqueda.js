@@ -108,12 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function convertirAMayusculas(input) {
     input.value = input.value.toUpperCase();
 }
-function limpiarTexto(textarea) {
-    let texto = textarea.value;
-    // Elimina caracteres especiales no deseados
- // Elimina espacios múltiples
-    textarea.value = texto;
-}
+
 function validarModelo(input) {
     // Permitir letras, números, espacios y guiones
     input.value = input.value.replace(/[^a-zA-Z0-9\s\-]/g, '');
