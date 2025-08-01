@@ -122,9 +122,8 @@
                     </div>
                     <div class="form-group">
                         <label for="fecha">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" name="fecha" value="{{ date('Y-m-d') }}" required>
+                        <input type="date" class="form-control" id="fecha" name="fecha" value="<?php echo date('Y-m-d'); ?>" required></div>
                     </div>
-                </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar Gasto</button>
                 </div>

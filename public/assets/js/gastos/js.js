@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Limpiar formulario al abrir modal
         nuevoGastoModal.addEventListener('show.bs.modal', function() {
             if (formNuevoGasto) formNuevoGasto.reset();
-            if (fechaInput) fechaInput.value = new Date().toISOString().substr(0, 10);
         });
     }
 
